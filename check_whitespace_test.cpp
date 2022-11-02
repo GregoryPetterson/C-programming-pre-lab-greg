@@ -7,19 +7,27 @@ TEST(strip, EmptyString) {
 }
 
 TEST(strip, NoWhitespace) {
-    ASSERT_STREQ("frog", strip("frog"));
+	char *stripped = strip("frog");
+    ASSERT_STREQ("frog", stripped);
+    free(stripped);
 }
 
 TEST(strip, WhitespaceOnFront) {
-    ASSERT_STREQ("frog", strip("   frog"));
+	char *stripped = strip("   frog");
+    ASSERT_STREQ("frog", stripped);
+	free(stripped);
 }
 
 TEST(strip, WhitespaceOnBack) {
-    ASSERT_STREQ("frog", strip("frog  "));
+	char* stripped = strip("frog  ");
+    ASSERT_STREQ("frog", stripped);
+free(stripped);
 }
 
 TEST(strip, WhitespaceOnBothEnds) {
-    ASSERT_STREQ("frog", strip("  frog     "));
+	char* stripped = strip("  frog     ");
+    ASSERT_STREQ("frog", stripped);
+free(stripped);
 }
 
 TEST(is_clean, EmptyString) {
