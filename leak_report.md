@@ -1,6 +1,2 @@
-# Leak report
-
-_Use this document to describe whatever memory leaks
-you find in `clean_whitespace.c` and how you might fix
-them. You should also probably remove this explanatory
-text._
+The memory errors in check_whitespace_test occured only in the strip tests because memory was being allocated when we gave strip a string. This was fixed by making a pointer that pointed
+at the address of the function and then freeing it after. I had to free it in the tests because that's when it was actually being allocated. Unlike the leak that happened when we compiled check_whitespace.c and main.c into check_whitespace. Memory was being allocated when we pointed to it in the cleaned pointer. Main called on cleaned and not strip, so cleaned had to be freed.
